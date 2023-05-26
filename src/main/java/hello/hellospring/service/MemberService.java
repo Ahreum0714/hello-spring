@@ -3,10 +3,13 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -14,6 +17,7 @@ public class MemberService {
     /** < DI(Dependency Injection) >
      * memoryRepository 직접 new 생성 X, 외부에서 넣어주도록 수정 (Test 코드와 같은 인스턴스를 사용하기 위함)
      * **/
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
